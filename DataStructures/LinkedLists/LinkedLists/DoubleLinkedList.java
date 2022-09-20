@@ -143,6 +143,11 @@ class DLL{
 		}
 		for( int i = 1 ; i <= size  ; i++) {
 			if (currentNode.data == element) {
+				if(size == 1) {
+					head = null ;
+					size-- ;
+					return ;
+				}
 				if( prevNode == null ) {
 					currentNode.next.prev = prevNode ;
 					head = currentNode.next ;
