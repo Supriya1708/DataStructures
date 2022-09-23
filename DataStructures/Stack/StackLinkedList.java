@@ -47,49 +47,49 @@ class StackLL{
 	public Node head , tail ;
 	public int size ;
 	StackLL(){
-		head = null ; 
-		tail = null ;
-		size = 0;
+		this.head = null ; 
+		this.tail = null ;
+		this.size = 0;
 	}
 	//push an element into stack
 	public void push(int Element) {
 		Node newNode = new Node();
 		newNode.data = Element ;
-		if( head == null ) {
-			head = newNode ;
-			tail = newNode ;
+		if( this.head == null ) {
+			this.head = newNode ;
+			this.tail = newNode ;
 			newNode.next = null ;
-			size++ ;
+			this.size++ ;
 			return ;
 		}
-		newNode.next = head ;
-		head = newNode ;
-		size++ ;
+		newNode.next = this.head ;
+		this.head = newNode ;
+		this.size++ ;
 		return ;
 	}
 	//pop an element from stack
 	public void pop() {
-		if(isEmpty()) {
+		if(this.isEmpty()) {
 			System.out.println("Stack doesnt exist!!!");
 			return  ;
 		}
-		int ele = head.data ;
-		head = head.next ;
-		size-- ;
+		int ele = this.head.data ;
+		this.head = this.head.next ;
+		this.size-- ;
 		System.out.println("popped element is : " + ele );
 	}
 	//peek stack
 	public void peek() {
-		if(isEmpty()) {
+		if(this.isEmpty()) {
 			System.out.println("Stack does not exist .");
 			return  ;
 		}
-		System.out.println("The top most element is " + head.data); 
+		System.out.println("The top most element is " + this.head.data); 
 	}
 	//display elements in stack.
 	public void display() {
-		Node currentNode = head ;
-		if( head == null ) {
+		Node currentNode = this.head ;
+		if( this.head == null ) {
 			System.out.println("Stack does not exist");
 			return ;
 		}
@@ -101,19 +101,19 @@ class StackLL{
 	}
 	//to check if the stack is empty.
 	public boolean isEmpty() {
-		if( head == null ) 
+		if( this.head == null ) 
 			return true ;
 		return false ;
 	}
 	//to get current size of the stack.
 	public int size() {
-		if(head == null)
+		if(this.head == null)
 			return -1 ;
-		return size ;
+		return this.size ;
 	}
 	// delete stack
 	public void deleteStack() {
-		head = null ;
+		this.head = null ;
 		System.out.println("Entire stack deleted!!!");
 	}
 }
