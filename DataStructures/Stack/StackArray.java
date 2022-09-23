@@ -16,12 +16,10 @@ public class StackArray {
 				stack.push(ele);
 				break ;
 			case 2:
-				ele = stack.pop();
-				System.out.println("The popped element is : " + ele );
+				stack.pop();
 				break ;
 			case 3:
-				ele = stack.peek();
-				System.out.println("The topmost element in stack is : " + ele );
+				stack.peek();
 				break ;
 			case 4:
 				stack.traversal() ;
@@ -44,29 +42,49 @@ class Stack{
 		this.stack =  new int[ size ] ;
 		this.topOfStack = -1 ;
 	}
+	//to check stack is empty
+	private boolean isEmpty() {
+		if( this.topOfStack == -1)
+			return true ;
+		return false ;
+	}
+	//to check whether stack is full
+	private boolean isFull() {
+		if(this.topOfStack == this.stack.length)
+			return true ;
+		return false ;
+	}
 	//To push an element in the stack.
 	public void push ( int element ) {
-		if ( this.topOfStack == this.stack.length ) {
+		if ( this.isFull() ) {
 			System.out.println( "Stack is Full ") ;
 			return ;
 		}
-		this.topOfStack++ ;
-		this.stack[this.topOfStack] = element ;
-		return ;
+		if(this.topOfStack + 1 < this.stack.length) {
+			this.topOfStack++ ;
+			this.stack[this.topOfStack] = element ;
+			return ;
+		}else {
+			System.out.println("Cannot insert element in stack");
+		}
 	}
 	//To pop an element from the stack
-	public int pop() {
-		if( this.topOfStack == -1 ) {
+	public void pop() {
+		if( this.isEmpty() ) {
 			System.out.println( " Stack is Empty ");
-			return -1;
+			return ;
 		}
 		int ele = this.stack[this.topOfStack] ;
 		this.topOfStack-- ;
-		return ele ;
+		System.out.println("The popped element is : " + ele );
 	}
 	//to peek the stack
-	public int peek() {
-		return this.stack[this.topOfStack] ;
+	public void peek() {
+		if(this.isEmpty()) {
+			System.out.println("Stack is empty!!");
+			return ;
+		}
+		System.out.println(this.stack[this.topOfStack] ); 
 	}
 	//Traversal of stack.
 	public void traversal() {
