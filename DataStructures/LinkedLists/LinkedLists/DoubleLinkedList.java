@@ -48,7 +48,7 @@ class DLL{
 	public void display() {
 		DoubleNode currentNode = head;
 		try {
-			for( int i = 1 ; i < size ; i++ ) {
+			while( currentNode.next != null ) {
 				System.out.print(currentNode.data + " -> ");
 				currentNode = currentNode.next;
 			}System.out.print(currentNode.data);
@@ -156,6 +156,7 @@ class DLL{
 					return ;
 				}else if ( currentNode.next == null ) {
 					prevNode.next = null ;
+					tail = prevNode ;
 					size-- ;
 					System.out.println( element + " is deleted from linked list !!");
 					return ;
