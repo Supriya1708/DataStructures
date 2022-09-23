@@ -40,13 +40,13 @@ class SLL{
 	int size;
 	//constructor
 	SLL(){
-		head = null;
-		tail = null;
-		size = 0;
+		this.head = null;
+		this.tail = null;
+		this.size = 0;
 	}
 	//Display elements of Linked List
 	public void display() {
-		SingleNode currentNode = head;
+		SingleNode currentNode = this.head;
 		try {
 			while(currentNode.next != null) {
 				System.out.print(currentNode.data + " -> ");
@@ -62,36 +62,36 @@ class SLL{
 	private void insertAtBeginning(int element) {
 		SingleNode newNode = new SingleNode();
 		newNode.data = element ;
-		if( head == null) {
-			head = newNode;
-			tail = newNode;
+		if( this.head == null) {
+			this.head = newNode;
+			this.tail = newNode;
 			newNode.next = null;
-			size++;
+			this.size++;
 			return;
 		}
-		newNode.next = head;
-		head = newNode;
-		size++;
+		newNode.next = this.head;
+		this.head = newNode;
+		this.size++;
 	}
 	//method to insert at End 
 	private void insertAtLast(int element) {
 		SingleNode newNode = new SingleNode();
 		newNode.data = element;
 		newNode.next = null;
-		if(head == null) {
-			head = newNode;
-			tail = newNode;
-			size++;
+		if(this.head == null) {
+			this.head = newNode;
+			this.tail = newNode;
+			this.size++;
 			return;
-		}tail.next = newNode;
-		tail = newNode;
-		size++;
+		}this.tail.next = newNode;
+		this.tail = newNode;
+		this.size++;
 	}
 	//method to insert at specific location
 	private void insertAtLocation(int element , int location) {
 		SingleNode newNode = new SingleNode();
 		newNode.data = element;
-		SingleNode currentNode = head;
+		SingleNode currentNode = this.head;
 		for ( int i = 1 ; i < location - 1 ; i++) {
 			currentNode = currentNode.next;
 		}
@@ -103,7 +103,7 @@ class SLL{
 	public void insert(int element , int location) {
 		if(location == 1) {
 			insertAtBeginning(element);
-		}else if (location > size ) {
+		}else if (location > this.size ) {
 			insertAtLast(element);
 		}else {
 			insertAtLocation( element , location );
@@ -111,12 +111,12 @@ class SLL{
 	}
 	//Search for element in linked list.
 	public boolean searchForElement( int element) {
-		SingleNode currentNode = head;
-		if(head == null) {
+		SingleNode currentNode = this.head;
+		if(this.head == null) {
 			System.out.println("Linked List does not exist!!");
 			return false;
 		}
-		for ( int i=1 ; i <= size ; i++) {
+		for ( int i=1 ; i <= this.size ; i++) {
 			if( currentNode.data == element ) {
 				System.out.println(element + " found at location "+i);
 				return true;
@@ -127,23 +127,24 @@ class SLL{
 	}
 	//Method for deleting an element
 	public void delete(int element) {
-		SingleNode currentNode = head;
+		SingleNode currentNode = this.head;
 		SingleNode previousNode = null;
-		if(head == null) {
+		if(this.head == null) {
 			System.out.println("Linked List does not exist!!!");
 			return ;
 		}
 		while(currentNode != null) {
 			if(currentNode.data == element) {
 				if(previousNode == null) {
-					head = currentNode.next;
+					this.head = currentNode.next;
 					System.out.println(element + " successfully deleted!");
 					size--;
 					return ;
 				}else {
 					previousNode.next = currentNode.next;
+					this.tail = previousNode ;
 					System.out.println(element + " successfully deleted!");
-					size--;
+					this.size--;
 					return;
 				}
 			}
