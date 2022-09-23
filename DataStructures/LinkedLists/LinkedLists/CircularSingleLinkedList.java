@@ -40,15 +40,15 @@ class CSLL{
 	int size;
 	//constructor
 	CSLL(){
-		head = null;
-		tail = null;
-		size = 0;
+		this.head = null;
+		this.tail = null;
+		this.size = 0;
 	}
 	//Display elements of Linked List
 	public void display() {
-		SingleNode currentNode = head;
+		SingleNode currentNode = this.head;
 		try {
-			for( int i = 1 ; i < size ; i++) {
+			for( int i = 1 ; i < this.size ; i++) {
 				System.out.print(currentNode.data + " -> ");
 				currentNode = currentNode.next;
 			}
@@ -62,50 +62,50 @@ class CSLL{
 	private void insertAtBeginning(int element) {
 		SingleNode newNode = new SingleNode();
 		newNode.data = element ;
-		if( head == null) {
-			head = newNode;
-			tail = newNode;
-			newNode.next = head;
-			size++;
+		if( this.head == null) {
+			this.head = newNode;
+			this.tail = newNode;
+			newNode.next = this.head;
+			this.size++;
 			return;
 		}
-		newNode.next = head;
-		head = newNode;
-		tail.next = newNode;
-		size++;
+		newNode.next = this.head;
+		this.head = newNode;
+		this.tail.next = newNode;
+		this.size++;
 	}
 	//method to insert at End 
 	private void insertAtLast(int element) {
 		SingleNode newNode = new SingleNode();
 		newNode.data = element;
-		if(head == null) {
-			head = newNode;
-			tail = newNode;
-			newNode.next = head;
-			size++;
+		if(this.head == null) {
+			this.head = newNode;
+			this.tail = newNode;
+			newNode.next = this.head;
+			this.size++;
 			return;
-		}newNode.next = head;
-		tail.next = newNode;
-		tail = newNode;
-		size++;
+		}newNode.next = this.head;
+		this.tail.next = newNode;
+		this.tail = newNode;
+		this.size++;
 	}
 	//method to insert at specific location
 	private void insertAtLocation(int element , int location) {
 		SingleNode newNode = new SingleNode();
 		newNode.data = element;
-		SingleNode currentNode = head;
+		SingleNode currentNode = this.head;
 		for ( int i = 1 ; i < location - 1 ; i++) {
 			currentNode = currentNode.next;
 		}
 		newNode.next = currentNode.next;
 		currentNode.next = newNode;
-		size++;
+		this.size++;
 	}
 	//General Insert Method.
 	public void insert(int element , int location) {
 		if(location == 1) {
 			insertAtBeginning(element);
-		}else if (location > size ) {
+		}else if (location > this.size ) {
 			insertAtLast(element);
 		}else {
 			insertAtLocation( element , location );
@@ -113,12 +113,12 @@ class CSLL{
 	}
 	//Search for element in linked list.
 	public boolean searchForElement( int element) {
-		SingleNode currentNode = head;
-		if(head == null) {
+		SingleNode currentNode = this.head;
+		if(this.head == null) {
 			System.out.println("Linked List does not exist!!");
 			return false;
 		}
-		for ( int i=1 ; i <= size ; i++) {
+		for ( int i=1 ; i <= this.size ; i++) {
 			if( currentNode.data == element ) {
 				System.out.println(element + " found at location "+i);
 				return true;
@@ -129,28 +129,39 @@ class CSLL{
 	}
 	//Method for deleting an element
 	public void delete(int element) {
-		SingleNode currentNode = head;
+		SingleNode currentNode = this.head;
 		SingleNode previousNode = null;
-		if(head == null) {
+		if(this.head == null) {
 			System.out.println("Linked List does not exist!!!");
 			return ;
 		}
-		for(int i = 1 ; i <= size ; i++) {
+		if(this.size == 1 && currentNode.data  == element) {
+			this.head = null ;
+			this.tail = null ;
+			this.size-- ;
+			System.out.println(element + " successfully deleted!");
+			return ;
+		}
+		for(int i = 1 ; i <= this.size ; i++) {
 			if(currentNode.data == element) {
 				if(previousNode == null) {
-					head = currentNode.next;
-					tail.next = head;
+					this.head = currentNode.next;
+					this.tail.next = this.head;
 					System.out.println(element + " successfully deleted!");
-					size--;
+					this.size--;
 					return ;
-				}else {
-					previousNode.next = currentNode.next;
-					System.out.println(element + " successfully deleted!");
-					size--;
-					return;
+				}else if ( currentNode.next == this.head ) {
+					previousNode.next = this.head ;
+					this.tail = previousNode ;
+					this.size-- ;
+					System.out.println( element + " is deleted from linked list !!");
+					return ;
 				}
-			}
-			previousNode = currentNode;
+				previousNode.next = currentNode.next ;
+				this.size-- ;
+				System.out.println( element + " is deleted from linked list !!");
+				return ;
+			}previousNode = currentNode ;
 			currentNode = currentNode.next;
 		}System.out.println(element  + " does not exist in linked list!!");
 		
