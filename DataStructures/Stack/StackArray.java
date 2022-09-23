@@ -41,52 +41,52 @@ class Stack{
 	int[] stack ;
 	int topOfStack ;
 	Stack ( int size ) {
-		stack =  new int[ size ] ;
-		topOfStack = -1 ;
+		this.stack =  new int[ size ] ;
+		this.topOfStack = -1 ;
 	}
 	//To push an element in the stack.
 	public void push ( int element ) {
-		if ( topOfStack == stack.length ) {
+		if ( this.topOfStack == this.stack.length ) {
 			System.out.println( "Stack is Full ") ;
 			return ;
 		}
-		topOfStack++ ;
-		stack[topOfStack] = element ;
+		this.topOfStack++ ;
+		this.stack[this.topOfStack] = element ;
 		return ;
 	}
 	//To pop an element from the stack
 	public int pop() {
-		if( topOfStack == -1 ) {
+		if( this.topOfStack == -1 ) {
 			System.out.println( " Stack is Empty ");
 			return -1;
 		}
-		int ele = stack[topOfStack] ;
-		topOfStack-- ;
+		int ele = this.stack[this.topOfStack] ;
+		this.topOfStack-- ;
 		return ele ;
 	}
 	//to peek the stack
 	public int peek() {
-		return stack[topOfStack] ;
+		return this.stack[this.topOfStack] ;
 	}
 	//Traversal of stack.
 	public void traversal() {
-		if( topOfStack == -1 ) {
+		if( this.topOfStack == -1 ) {
 			System.out.println(" Stack is Empty ");
 			return ;
 		}
-		for( int i = 0 ; i <= topOfStack ; i++) {
-			System.out.print( stack[i] + " ");
+		for( int i = 0 ; i <= this.topOfStack ; i++) {
+			System.out.print( this.stack[i] + " ");
 		}
 		System.out.println();
 	}
 	//Search for an element in the stack 
 	public boolean search ( int element ) {
-		if( topOfStack == -1 ) {
+		if( this.topOfStack == -1 ) {
 			System.out.println(" Stack is empty ");
 			return false ;
 		}
-		for( int i = 0 ; i <= topOfStack ; i++) {
-			if( stack[i] == element ) {
+		for( int i = 0 ; i <= this.topOfStack ; i++) {
+			if( this.stack[i] == element ) {
 				System.out.println( element + " found at index " + i);
 				return true ;
 			}
