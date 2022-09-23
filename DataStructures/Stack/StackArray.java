@@ -50,7 +50,7 @@ class Stack{
 	}
 	//to check whether stack is full
 	private boolean isFull() {
-		if(this.topOfStack == this.stack.length)
+		if(this.topOfStack == this.stack.length - 1)
 			return true ;
 		return false ;
 	}
@@ -60,13 +60,10 @@ class Stack{
 			System.out.println( "Stack is Full ") ;
 			return ;
 		}
-		if(this.topOfStack + 1 < this.stack.length) {
-			this.topOfStack++ ;
-			this.stack[this.topOfStack] = element ;
-			return ;
-		}else {
-			System.out.println("Cannot insert element in stack");
-		}
+		this.topOfStack++ ;
+		this.stack[this.topOfStack] = element ;
+		return ;
+		
 	}
 	//To pop an element from the stack
 	public void pop() {
