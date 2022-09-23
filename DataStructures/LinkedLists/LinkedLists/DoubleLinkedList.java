@@ -40,13 +40,13 @@ class DLL{
 	int size;
 	//Constructor
 	DLL(){
-		head = null;
-		tail = null;
-		size = 0;
+		this.head = null;
+		this.tail = null;
+		this.size = 0;
 	}
 	//Display all elements in double linked list
 	public void display() {
-		DoubleNode currentNode = head;
+		DoubleNode currentNode = this.head;
 		try {
 			while( currentNode.next != null ) {
 				System.out.print(currentNode.data + " -> ");
@@ -62,16 +62,16 @@ class DLL{
 		DoubleNode newNode = new DoubleNode();
 		newNode.data = element;
 		newNode.prev = null;
-		if( head == null ) {
-			head = newNode ;
-			tail = newNode ;
+		if( this.head == null ) {
+			this.head = newNode ;
+			this.tail = newNode ;
 			newNode.next = null ;
-			size++ ;
+			this.size++ ;
 			return ;
 		}
-		newNode.next = head;
-		head = newNode;
-		size++ ;
+		newNode.next = this.head;
+		this.head = newNode;
+		this.size++ ;
 		return ;
 	}
 	//Insert element at the end of linked list
@@ -79,22 +79,22 @@ class DLL{
 		DoubleNode newNode = new DoubleNode();
 		newNode.data = element ;
 		newNode.next = null ;
-		if( head == null ) {
-			head = newNode ;
-			tail = newNode ;
+		if( this.head == null ) {
+			this.head = newNode ;
+			this.tail = newNode ;
 			newNode.prev = null ;
-			size++ ;
+			this.size++ ;
 			return ;
 		}
-		tail.next = newNode ;
-		newNode.prev = tail ;
-		tail = newNode ;
-		size++ ;
+		this.tail.next = newNode ;
+		newNode.prev = this.tail ;
+		this.tail = newNode ;
+		this.size++ ;
 		return ;
 	}
 	//Insert at specific  position in linked list.
 	private void insertAtPosition( int element , int location ) {
-		DoubleNode currentNode = head ;
+		DoubleNode currentNode = this.head ;
 		DoubleNode newNode = new DoubleNode();
 		newNode.data = element ;
 		for( int i = 1 ; i < location-1 ; i++ ) {
@@ -104,14 +104,14 @@ class DLL{
 		newNode.next = currentNode.next ;
 		currentNode.next.prev = newNode ;
 		currentNode.next = newNode;
-		size++;
+		this.size++;
 		return ;
 	}
 	//Method for inserting element in linked list.
 	public void insert ( int element , int location ) {
 		if( location == 1 ) {
 			insertAtBeginning( element );
-		}else if ( location > size ) {
+		}else if ( location > this.size ) {
 			insertAtLast( element );
 		}else {
 			insertAtPosition ( element , location );
@@ -119,12 +119,12 @@ class DLL{
 	}
 	//Method to search for an element in double linked list.
 	public boolean search ( int element ) {
-		DoubleNode currentNode = head ;
-		if(head == null ) {
+		DoubleNode currentNode = this.head ;
+		if(this.head == null ) {
 			System.out.println("Linked list does not exist!!");
 			return false ;
 		}
-		for ( int i = 1 ; i <= size ; i++) {
+		for ( int i = 1 ; i <= this.size ; i++) {
 			if ( currentNode.data == element ) {
 				System.out.println(element + " found at location " + i);
 				return true ;
@@ -135,35 +135,35 @@ class DLL{
 	}
 	//Method to delete an element from linked list.
 	public void delete( int element ) {
-		DoubleNode currentNode = head ;
+		DoubleNode currentNode = this.head ;
 		DoubleNode prevNode = null ;
-		if(head == null ) {
+		if(this.head == null ) {
 			System.out.println("Linked List does not exist !!!");
 			return ;
 		}
-		for( int i = 1 ; i <= size  ; i++) {
+		for( int i = 1 ; i <= this.size  ; i++) {
 			if (currentNode.data == element) {
-				if(size == 1) {
-					head = null ;
-					size-- ;
+				if(this.size == 1) {
+					this.head = null ;
+					this.size-- ;
 					return ;
 				}
 				if( prevNode == null ) {
 					currentNode.next.prev = prevNode ;
-					head = currentNode.next ;
-					size-- ;
+					this.head = currentNode.next ;
+					this.size-- ;
 					System.out.println( element + " is deleted from linked list !! ");
 					return ;
 				}else if ( currentNode.next == null ) {
 					prevNode.next = null ;
-					tail = prevNode ;
-					size-- ;
+					this.tail = prevNode ;
+					this.size-- ;
 					System.out.println( element + " is deleted from linked list !!");
 					return ;
 				}
 				currentNode.next.prev = prevNode ;
 				prevNode.next = currentNode.next ;
-				size-- ;
+				this.size-- ;
 				System.out.println( element + " is deleted from linked list !!");
 				return ;
 			}prevNode = currentNode ;
