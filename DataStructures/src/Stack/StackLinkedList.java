@@ -1,3 +1,4 @@
+package Stack;
 import java.util.* ;
 public class StackLinkedList {
 	public static void main(String[] args) {

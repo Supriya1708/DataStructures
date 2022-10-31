@@ -1,3 +1,4 @@
+package Graph;
 import java.util.*;
 public class GraphAdjacencyMatrix {
 	public static void main(String[] args) {
