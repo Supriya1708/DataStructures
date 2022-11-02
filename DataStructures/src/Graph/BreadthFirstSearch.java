@@ -2,12 +2,12 @@ package Graph;
 import java.util.*;
 public class BreadthFirstSearch {
 	public static void main(String[] args) {
-		ArrayList<GraphNode> nodeList = new ArrayList<>();
-		nodeList.add(new GraphNode("A",0));
-		nodeList.add(new GraphNode("B",1));
-		nodeList.add(new GraphNode("C",2));
-		nodeList.add(new GraphNode("D",3));
-		nodeList.add(new GraphNode("E",4));
+		ArrayList<GraphNodes> nodeList = new ArrayList<>();
+		nodeList.add(new GraphNodes("A",0));
+		nodeList.add(new GraphNodes("B",1));
+		nodeList.add(new GraphNodes("C",2));
+		nodeList.add(new GraphNodes("D",3));
+		nodeList.add(new GraphNodes("E",4));
 		BFS graph  = new BFS(nodeList);
 		graph.addUndirectedEdge(0, 1);
 		graph.addUndirectedEdge(0, 2);
@@ -21,20 +21,20 @@ public class BreadthFirstSearch {
 	
 }
 
-class GraphNode{
+class GraphNodes{
 	public String name ; 
 	public int index ;
 	public boolean isVisited = false;
-	GraphNode(String name , int index ){
+	GraphNodes(String name , int index ){
 		this.name = name ; 
 		this.index  = index ;
 	}
 }
 
 class BFS{
-	ArrayList<GraphNode> nodeList = new ArrayList<>();
+	ArrayList<GraphNodes> nodeList = new ArrayList<>();
 	int[][] adjacencyMatrix;
-	BFS(ArrayList<GraphNode> nodeList){
+	BFS(ArrayList<GraphNodes> nodeList){
 		this.nodeList = nodeList ;
 		adjacencyMatrix = new int[nodeList.size()][nodeList.size()];
 	}
@@ -43,10 +43,11 @@ class BFS{
 		adjacencyMatrix[v2][v1] = 1 ;
 	}
 	public void bfs() {
-		LinkedList<GraphNode> queue = new LinkedList<>();
+		LinkedList<GraphNodes> queue = new LinkedList<>();
 		queue.add(nodeList.get(0));
+		System.out.print("The Breadth First Traversal of the above graph is :\t");
 		while(!queue.isEmpty()) {
-			GraphNode temp = queue.remove(0);
+			GraphNodes temp = queue.remove(0);
 			temp.isVisited = true ;
 			System.out.print(temp.name+"  ");
 			for(int j=0;j<nodeList.size();j++) {
