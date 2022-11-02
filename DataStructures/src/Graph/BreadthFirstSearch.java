@@ -42,9 +42,9 @@ class BFS{
 		adjacencyMatrix[v1][v2] = 1 ;
 		adjacencyMatrix[v2][v1] = 1 ;
 	}
-	public void bfs() {
+	public void bfsVisit(GraphNodes node) {
 		LinkedList<GraphNodes> queue = new LinkedList<>();
-		queue.add(nodeList.get(0));
+		queue.add(node);
 		System.out.print("The Breadth First Traversal of the above graph is :\t");
 		while(!queue.isEmpty()) {
 			GraphNodes temp = queue.remove(0);
@@ -57,6 +57,13 @@ class BFS{
 						queue.add(nodeList.get(j));
 					}
 				}
+			}
+		}
+	}
+	public void bfs() {
+		for(GraphNodes node : nodeList) {
+			if(!node.isVisited) {
+				bfsVisit(node);
 			}
 		}
 	}
