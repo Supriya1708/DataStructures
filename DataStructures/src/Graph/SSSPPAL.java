@@ -40,7 +40,7 @@ class ShortestPathAdjacencyList{
 	ShortestPathAdjacencyList(ArrayList<SSSPPNode1> nodeList){
 		this.nodeList = nodeList ;
 	}
-	public void addUndirectedEdge(int i , int j) {
+	public void addUndirectedEdge(int i, int j) {
 		SSSPPNode1 first = nodeList.get(i);
 		SSSPPNode1 second = nodeList.get(j);
 		first.neighbours.add(second);
